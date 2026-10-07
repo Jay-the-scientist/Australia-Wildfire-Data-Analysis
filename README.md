@@ -1,59 +1,99 @@
 # Australia Wildfires Analysis
-Analyze historical wildfire patterns across Australia to understand environmental trends, contributing factors, and regional impacts using satellite-derived fire activity data.
 
-## Project Description
-This project explores wildfire data in Australia from 2005 onward, focusing on fire area, radiative power, brightness, and confidence levels across seven regions. The analysis aims to uncover spatial and temporal fire patterns and the environmental conditions that influence wildfire activity.
+**Exploring historical wildfire activity across Australia through data analysis and visualization.**
 
-## Installation
-Required packages can be installed using:
+## Overview
 
-```bash
-pip install pandas numpy matplotlib seaborn geopandas folium
-```
+How has wildfire activity changed across Australia over time? Do different regions experience different patterns in fire activity and intensity?
+
+This project explores these questions using historical Australian wildfire data, examining changes in estimated fire area, regional differences, and fire-related measurements.
+
+Using Python, I analyzed wildfire observations and created visualizations to better understand how fire activity varies over time and across different parts of Australia.
 
 ## Dataset
-**Source:** NASA Earthdata FIRMS - [Dataset Link](https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms/c6-mcd14dl)  
-This dataset includes daily measurements of fire activity with confidence scores above 75%, broken down by Australian region. Key variables include:
 
-- **Region**: One of seven geographical regions in Australia  
-- **Date**: Daily entries in UTC  
-- **Estimated_fire_area**: Sum of estimated fire areas (km²) per day  
-- **Mean_estimated_fire_brightness**: Daily average fire brightness (Kelvin)  
-- **Mean_estimated_fire_radiative_power**: Daily mean radiative power (Megawatts)  
-- **Mean_confidence / Std_confidence / Var_confidence**: Statistical measures of fire detection confidence  
-- **Count**: Number of fire-flagged pixels per day  
-- **Replaced**: Indicator whether higher-quality data replaced preliminary records
+The project uses the **Historical Wildfires** dataset provided through IBM Skills Network, containing fire activity observations across seven Australian regions beginning in 2005.
 
-![Alt text](images/1-dataframehead.png)
+The dataset is based on satellite-derived fire measurements and includes:
 
+- **Estimated fire area:** Estimated area associated with detected vegetation fires, measured in square kilometers
+- **Fire brightness:** Temperature-related measurements from detected fire pixels, measured in Kelvin
+- **Radiative power:** Estimated energy emitted by detected fires, measured in megawatts
+- **Detection confidence:** Confidence associated with the fire observations
+- **Region and date:** Geographic region and observation date
+- **Fire pixel count:** Number of pixels flagged as presumed vegetation fires
 
-## Methodology
-- Cleaned and preprocessed data to handle missing values and ensure regional consistency  
-- Explored variable correlations (e.g., brightness vs. area, radiative power vs. pixel count)  
-- Visualized regional fire patterns using folium and geopandas  
+The analysis focuses on understanding how these measurements change across time and geographic regions.
 
-## Insights
-- This plot represents that the estimated fire area was on its peak after 2011, April and before 2012. You can verify on google/news, this was the time of maximum wildfire hit in Austrailia
+**Data source:** [IBM Skills Network — Historical Wildfires Dataset](https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-DV0101EN-SkillsNetwork/Data%20Files/Historical_Wildfires.csv)
 
-![Alt text](images/5-estimated-fire-over-time-by-month-and-year.png)
+## Exploring Wildfire Activity Over Time
 
-To understand the distribution of estimated fire brightness across regions: 
+To understand how wildfire activity changed over the years, I grouped the observations by year and month and calculated the average estimated fire area.
 
-![Alt text](images/11-stacked-distribution-of-estimated-fire-brightess-across-regions.png)
+The analysis revealed noticeable changes in estimated fire area over time, including a period of elevated activity around 2011–2012.
 
-  
-- The following graph shows a strong correlation with mean radiative power and mean confidence
+Examining the data at a monthly level provided a closer look at when these changes occurred.
 
-![Alt text](images/12-correlation-between-mean-estimated-fire-radiative-power-and-mean-confidence.png)
+![Average Estimated Fire Area by Month and Year](images/5-estimated-fire-over-time-by-month-and-year.png)
 
-- Visualizing geospatial data on the folium map allows analyses and visualizations on the world map
+**Key takeaway:** Wildfire measurements fluctuate over time, and examining monthly patterns can reveal changes that are less apparent in annual summaries.
 
-![Alt text](images/14-regions-marked-in-folium.png)
+## Comparing Australia's Regions
 
-## Conclusion
-In conclusion, this project helped me understand and apply feature encoding, visualizing data with various graphs, and visualizing location data using folium to crate informative plots. 
+Wildfire characteristics can vary significantly across different geographic regions.
 
-## Future Work
-- Build machine learning models to predict high-risk days and regions  
-- Analyze long-term environmental and ecological effects of recurrent wildfires  
+This analysis covers seven Australian regions:
 
+- New South Wales (NSW)
+- Northern Territory (NT)
+- Queensland (QL)
+- South Australia (SA)
+- Tasmania (TA)
+- Victoria (VI)
+- Western Australia (WA)
+
+To compare these regions, I examined the distribution of estimated fire brightness using histograms and regional comparisons.
+
+![Distribution of Estimated Fire Brightness Across Australian Regions](images/11-stacked-distribution-of-estimated-fire-brightess-across-regions.png)
+
+The stacked histogram illustrates how recorded fire brightness measurements are distributed across the seven regions.
+
+**Key takeaway:** Comparing regional distributions provides a more detailed view of wildfire measurements than looking only at national averages.
+
+## Mapping Australia's Regions
+
+To provide geographic context for the analysis, I created an interactive map using **Folium**.
+
+The map identifies the seven Australian regions included in the dataset using geographic markers.
+
+![Australian Regions Visualized with Folium](images/14-regions-marked-in-folium.png)
+
+The map provides a geographic reference for understanding the regions represented in the analysis. The markers identify regions rather than individual wildfire locations.
+
+## Technologies Used
+
+- **Python** — Data analysis and visualization
+- **Pandas & NumPy** — Data preparation, grouping, and aggregation
+- **Matplotlib & Seaborn** — Statistical charts and visualizations
+- **Folium** — Interactive geographic mapping
+- **Jupyter Notebook** — Interactive data exploration
+
+## Skills Demonstrated
+
+- Exploratory data analysis
+- Working with historical and time-based data
+- Data grouping and aggregation
+- Time-series visualization
+- Regional comparisons
+- Statistical data visualization
+- Geographic data visualization
+- Communicating findings through charts
+
+## Project Context
+
+This project was completed as part of the **IBM Data Visualization coursework**, providing hands-on experience analyzing and presenting historical environmental data.
+
+The analysis demonstrates how different visualization techniques can be used to explore temporal, regional, and measurement-related patterns in a dataset.
+
+The project focuses on understanding and communicating historical wildfire observations rather than predicting future wildfire events.
